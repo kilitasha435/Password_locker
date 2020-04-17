@@ -1,5 +1,5 @@
 import unittest
-from user_credentials import User
+from user_credentials import User, Credentials
 
 class TestUser(unittest.TestCase):
     '''
@@ -22,6 +22,16 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.first_name, "Kevin")
         self.assertEqual(self.new_user.last_name, "Kili")
         self.assertEqual(self.new_user.password, "kilitasha123")
+
+    def test_save_credentials(self):
+        '''
+        Test case to check if we can save credentials to the credentials list.
+        '''
+        self.new_credential.save_credential()
+        facebook = Credentials("Stacie", "Facebook", "Staciey", "stac123")
+        facebook.save_credential()
+        self.assertEqual(len(Credentials.credentials_list), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
