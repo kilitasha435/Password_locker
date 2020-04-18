@@ -53,4 +53,18 @@ class Credentials:
         save_credential method that saves credential objects in the credentials_list
         '''
 
-        Credentials.credentials_list.append(self)        
+        Credentials.credentials_list.append(self)
+
+    def generate_password(self):
+        '''
+        Function to generate a password where a user can generate a password based on their length of choice
+        '''
+        chars = "abcdefghijklmnopqrstuvwxyziABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890^?!?$%&/()=?`'+#*'~';:_,.-<>|"
+        password = ""
+
+        length = int(input("[*] Input Password Length: "))
+        while len(password) != length:
+            password = password + random.choice(chars)
+            if len(password) == length:
+                print("Password: %s" % password)
+        return password               
