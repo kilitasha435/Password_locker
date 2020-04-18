@@ -101,4 +101,14 @@ class Credentials:
         Class method that copies a credentials details after the credentials site_name has been entered
         '''
         find_credential = Credentials.find_by_site_name(site_name)
-        return pyperclip.copy(find_credential.password)                                                
+        return pyperclip.copy(find_credential.password)
+
+    @classmethod
+    def credential_exist(cls, site_name):
+        '''
+        Class method that checks if a credential exists
+        '''
+        for credential in cls.credentials_list:
+            if credential.site_name == site_name:
+                return True
+        return False                                                        
