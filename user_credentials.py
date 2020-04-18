@@ -2,7 +2,6 @@ import pyperclip
 import random
 import string
 
-
 class User:
     '''
     Class that generates instances of user credentials
@@ -18,11 +17,13 @@ class User:
         self.last_name = last_name
         self.password = password
 
+
     def save_user(self):
         '''
         save_user method that saves user objects in the users_list
         '''
         User.users_list.append(self)
+
 
     @classmethod
     def check_user(cls, first_name, password):
@@ -34,6 +35,7 @@ class User:
             if (user.first_name == first_name and user.password == password):
                 current_user = user.first_name
         return current_user
+
 
 class Credentials:
     '''
@@ -53,12 +55,14 @@ class Credentials:
         self.account_name = account_name
         self.password = password
 
+
     def save_credential(self):
         '''
         save_credential method that saves credential objects in the credentials_list
         '''
 
         Credentials.credentials_list.append(self)
+        
 
     def generate_password(self):
         '''
@@ -72,13 +76,15 @@ class Credentials:
             password = password + random.choice(chars)
             if len(password) == length:
                 print("Password: %s" % password)
-        return password  
+        return password
+        
 
     def del_credential(self):
         '''
         Method that deletes a saved credential from the credential_list
         '''
-        Credentials.credentials_list.remove(self)  
+        Credentials.credentials_list.remove(self)
+        
 
     @classmethod
     def display_credential(cls, user_name):
@@ -89,7 +95,8 @@ class Credentials:
         for credential in cls.credentials_list:
             if credential.user_name == user_name:
                 users_credentials_list.append(credential)
-        return users_credentials_list 
+        return users_credentials_list
+
 
     @classmethod
     def find_by_site_name(cls, site_name):
@@ -98,8 +105,9 @@ class Credentials:
         '''
         for credential in cls.credentials_list:
             if credential.site_name == site_name:
-                return credential  
+                return credential
 
+        
     @classmethod
     def copy_credential(cls, site_name):
         '''
@@ -107,6 +115,7 @@ class Credentials:
         '''
         find_credential = Credentials.find_by_site_name(site_name)
         return pyperclip.copy(find_credential.password)
+
 
     @classmethod
     def credential_exist(cls, site_name):
@@ -116,4 +125,4 @@ class Credentials:
         for credential in cls.credentials_list:
             if credential.site_name == site_name:
                 return True
-        return False                                                        
+        return False
