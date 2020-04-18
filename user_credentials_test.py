@@ -85,6 +85,17 @@ class TestUser(unittest.TestCase):
         self.new_credential.del_credential()
         self.assertEqual(len(Credentials.credentials_list), 1)
 
+    def test_credential_exists(self):
+        '''
+        Test case to check if a credential exists in the credential_list
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
+        test_credential.save_credential()
+
+        credential_exists = Credentials.credential_exist("Gmail")
+        self.assertTrue(credential_exists)        
+
        
 
 
