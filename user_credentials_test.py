@@ -32,6 +32,12 @@ class TestUser(unittest.TestCase):
         facebook.save_credential()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
+    def tearDown(self):
+        '''
+        A method that clears the users credentials list after every test.
+        '''
+        Credentials.credentials_list = []
+
 
 if __name__ == '__main__':
     unittest.main()
