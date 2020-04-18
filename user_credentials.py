@@ -1,4 +1,5 @@
 import pyperclip
+import random
 
 
 class User:
