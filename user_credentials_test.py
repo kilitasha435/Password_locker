@@ -72,7 +72,19 @@ class TestUser(unittest.TestCase):
             return pyperclip.copy(find_credential.password)
         Credentials.copy_credential(self.new_credential.site_name)
         self.assertEqual('kilitasha@123', pyperclip.paste())
-        print(pyperclip.paste())              
+        print(pyperclip.paste())
+
+    def test_delete_credential(self):
+        '''
+        Test case to test if we can delete a saved credential.
+        '''
+        self.new_credential.save_credential()
+        new_credential = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
+        new_credential.save_credential()
+
+        self.new_credential.del_credential()
+        self.assertEqual(len(Credentials.credentials_list), 1)
+
        
 
 
