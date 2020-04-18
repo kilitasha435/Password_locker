@@ -1,3 +1,6 @@
+import pyperclip
+
+
 class User:
     '''
     Class that generates instances of user credentials
