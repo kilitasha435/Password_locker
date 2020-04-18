@@ -38,6 +38,18 @@ class TestUser(unittest.TestCase):
         '''
         Credentials.credentials_list = []
 
+    def test_display_credentials(self):
+        '''
+        Test case to test if our objects show.
+        '''
+        self.new_credential.save_credential()
+        facebook = Credentials("Stacie", "Facebook", "Staciey", "stac123")
+        facebook.save_credential()
+        gmail = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
+        gmail.save_credential()
+        self.assertEqual(len(Credentials.display_credential(facebook.user_name)), 1)
+       
+
 
 if __name__ == '__main__':
     unittest.main()
