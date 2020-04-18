@@ -57,7 +57,22 @@ class TestUser(unittest.TestCase):
         gmail = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
         gmail.save_credential()
         credential_exists = Credentials.find_by_site_name('Gmail')
-        self.assertEqual(credential_exists, gmail)        
+        self.assertEqual(credential_exists, gmail)  
+
+    def test_copy_credential(self):
+        '''
+        Test case to test if the copy credential function copies the correct credential.
+        '''
+        self.new_credential.save_credential()
+        instagram = Credentials("Kevin", "Instagram", "kilikevin", "kilitasha@123")
+        instagram.save_credential()
+        find_credential = None
+        for credential in Credentials.users_credentials_list:
+            find_credential = Credentials.find_by_site_name(credential.site_name)
+            return pyperclip.copy(find_credential.password)
+        Credentials.copy_credential(self.new_credential.site_name)
+        self.assertEqual('kilitasha@123', pyperclip.paste())
+        print(pyperclip.paste())              
        
 
 
