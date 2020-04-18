@@ -48,6 +48,16 @@ class TestUser(unittest.TestCase):
         gmail = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
         gmail.save_credential()
         self.assertEqual(len(Credentials.display_credential(facebook.user_name)), 1)
+
+    def test_find_by_site_name(self):
+        '''
+        Test case to test if we can search credential by site_name and return the correct credential.
+        '''
+        self.new_credential.save_credential()
+        gmail = Credentials('Sheila','Gmail','shy6','sheilaegeidza6')
+        gmail.save_credential()
+        credential_exists = Credentials.find_by_site_name('Gmail')
+        self.assertEqual(credential_exists, gmail)        
        
 
 
