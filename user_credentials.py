@@ -67,4 +67,10 @@ class Credentials:
             password = password + random.choice(chars)
             if len(password) == length:
                 print("Password: %s" % password)
-        return password               
+        return password  
+
+    def del_credential(self):
+        '''
+        Method that deletes a saved credential from the credential_list
+        '''
+        Credentials.credentials_list.remove(self)                     
