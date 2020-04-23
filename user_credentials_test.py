@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each check if pyperclip is installedtest cases.
         '''
-        self.new_user = User('Kevin', 'Kili', 'kili@123') # create user object
+        self.new_user = User('Kevin', 'Kili', 'kilitasha123') # create user object
 
 
     def test__init__(self):
@@ -22,7 +22,7 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.first_name, "Kevin")
         self.assertEqual(self.new_user.last_name, "Kili")
-        self.assertEqual(self.new_user.password, "kili@123")
+        self.assertEqual(self.new_user.password, "kilitasha123")
 
 
     def tearDown(self):
@@ -44,9 +44,9 @@ class TestUser(unittest.TestCase):
         '''
         Test case to test whether login feature is functional.
         '''
-        self.new_user = User('Kevin', 'Kili', 'kili@123')
+        self.new_user = User('Kevin', 'Kili', 'kilitasha123')
         self.new_user.save_user()
-        user2 = User('Sheila', 'Egeidza', 'shy@123')
+        user2 = User('Machel', 'Nyanumba', 'moringa19')
         user2.save_user()
  
         for user in User.users_list:
@@ -69,17 +69,17 @@ class TestCredentials(unittest.TestCase):
         Set up method to run before each test cases.
         '''
 
-        self.new_credential = Credentials("Kevin", "Instagram", "kilikevin","kilitasha@123")
+        self.new_credential = Credentials("Brian", "Instagram", "bryomajor", "nairobi@13")
 
 
     def test__init__(self):
         '''
         Test case to check if creation of credential instances is properly done.
         '''
-        self.assertEqual(self.new_credential.user_name, "Kevin")
+        self.assertEqual(self.new_credential.user_name, "Brian")
         self.assertEqual(self.new_credential.site_name, "Instagram")
-        self.assertEqual(self.new_credential.account_name, "kilikevin")
-        self.assertEqual(self.new_credential.password, "kilitasha@123")
+        self.assertEqual(self.new_credential.account_name, "bryomajor")
+        self.assertEqual(self.new_credential.password, "nairobi@13")
      
 
     def tearDown(self):
@@ -94,7 +94,7 @@ class TestCredentials(unittest.TestCase):
         Test case to check if we can save credentials to the credentials list.
         '''
         self.new_credential.save_credential()
-        facebook = Credentials("Mitchel", "Facebook", "derric", "kipto@123")
+        facebook = Credentials("Bilal", "Facebook", "bilaloh", "mombasa@13")
         facebook.save_credential()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
@@ -104,9 +104,9 @@ class TestCredentials(unittest.TestCase):
         Test case to test if our objects show.
         '''
         self.new_credential.save_credential()
-        facebook = Credentials("Mitchel", "Facebook", "derric", "kipto@123")
+        facebook = Credentials("Bilal", "Facebook", "bilaloh", "mombasa@13")
         facebook.save_credential()
-        gmail = Credentials('Tanui','Gmail','tanuijane','mitei123')
+        gmail = Credentials('Jane','Gmail','maryjoe','pswd200')
         gmail.save_credential()
         self.assertEqual(len(Credentials.display_credential(facebook.user_name)), 1)
 
@@ -116,7 +116,7 @@ class TestCredentials(unittest.TestCase):
         Test case to test if we can search credential by site_name and return the correct credential.
         '''
         self.new_credential.save_credential()
-        gmail = Credentials('Tanui','Gmail','tanuijane','mitei123')
+        gmail = Credentials('Jane','Gmail','maryjoe','pswd200')
         gmail.save_credential()
         credential_exists = Credentials.find_by_site_name('Gmail')
         self.assertEqual(credential_exists, gmail)
@@ -127,14 +127,14 @@ class TestCredentials(unittest.TestCase):
         Test case to test if the copy credential function copies the correct credential.
         '''
         self.new_credential.save_credential()
-        instagram = Credentials('Eleanor','Instagram','','bwire@123')
+        instagram = Credentials('Brian','Instagram','bryomajor','nairobi@13')
         instagram.save_credential()
         find_credential = None
         for credential in Credentials.users_credentials_list:
             find_credential = Credentials.find_by_site_name(credential.site_name)
             return pyperclip.copy(find_credential.password)
         Credentials.copy_credential(self.new_credential.site_name)
-        self.assertEqual('bwire@123', pyperclip.paste())
+        self.assertEqual('nairobi@13', pyperclip.paste())
         print(pyperclip.paste())
 
     
@@ -143,7 +143,7 @@ class TestCredentials(unittest.TestCase):
         Test case to test if we can delete a saved credential.
         '''
         self.new_credential.save_credential()
-        new_credential = Credentials('Tanui','Gmail','tanuijane','mitei123')
+        new_credential = Credentials('Jane','Gmail','maryjoe','pswd200')
         new_credential.save_credential()
 
         self.new_credential.del_credential()
@@ -155,7 +155,7 @@ class TestCredentials(unittest.TestCase):
         Test case to check if a credential exists in the credential_list
         '''
         self.new_credential.save_credential()
-        test_credential = Credentials('Tanui','Gmail','tanuijane','mitei123')
+        test_credential = Credentials('Jane','Gmail','maryjoe','pswd200')
         test_credential.save_credential()
 
         credential_exists = Credentials.credential_exist("Gmail")
@@ -165,3 +165,7 @@ class TestCredentials(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+
+

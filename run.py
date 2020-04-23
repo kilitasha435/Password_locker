@@ -84,20 +84,20 @@ def main():
     print('\n')
 
     print("")
-    print("Hello there! Welcome to  The Password Locker.")
+    print("Hello there! Welcome to Password Locker.")
     while True:
-        print("*"*50)
+        print("*"*60)
         print('\n')
         print("Use these codes to navigate: \n ca - Create an account \n li - Log in \n ex - Exit")
         print('\n')
-        short_code = input("Enter a choice: ").upper().strip()
+        short_code = input("Enter a choice: ").lower().strip()
 
         if short_code == 'ex':
             break
 
         elif short_code == 'ca':
             print('\n')
-            print("-"*50)
+            print("-"*60)
             print('\n')
             print("To create a new account:")
             first_name = input('Enter your first name - ').strip()
@@ -108,7 +108,7 @@ def main():
             print(f"New account created for {first_name} {last_name} using password {password}")
         
         elif short_code == 'li':
-            print("-"*50)
+            print("-"*60)
             print('\n')
             print("Enter your account details to log in.")
             user_name = input("Enter your first name - ").strip()
@@ -118,14 +118,14 @@ def main():
                 print('\n')
                 print(f"Welcome {user_name}. Please choose an option to continue.")
                 while True:
-                    print("-"*50)
+                    print("-"*60)
                     print("Navigation codes: \n cc - To create a credential \n dc - To display all credentials \n fc - To find a credential \n cp - To copy password \n del - To delete a credential \n ex - Exit")
                     print('\n')
                     short_code = input('Enter a choice: ').lower().strip()
                     print("-"*60)
                     if short_code == 'ex':
                         print('\n')
-                        print(f"Have a nice time {user_name}")
+                        print(f"Goodbye {user_name}")
                         break
                     elif short_code == 'cc':
                         print('\n')
@@ -149,7 +149,7 @@ def main():
                             elif password_choice == 'ex':
                                 break
                             else:
-                                print("Heeeey! You entered the wrong option. Please try again.")
+                                print("Bummer! You entered the wrong option. Please try again.")
                         save_credential(create_credential(user_name, site_name, account_name,password))
                         print('\n')
                         print(f"Credential created: \n Site name: {site_name} - Account Username: {account_name} - Password: {password}")
@@ -158,7 +158,7 @@ def main():
                         print('\n')
 
                         if display_credentials(user_name):
-                            print("Here is a list of all your credentials:")
+                            print("Here is a list of all your creddentials:")
                             print('\n')
                             for credential in display_credentials(user_name):
                                 print(f"Site name: {credential.site_name} - Account name: {credential.account_name} - Password: {credential.password}")
@@ -196,17 +196,19 @@ def main():
                             ("No such credential exists!")
                         
                     else:
-                        print("Heeeeey! You entered the wrong option. Please try again.")
+                        print("Bummer! You entered the wrong option. Please try again.")
                 
                 else:
                     print('\n')
-                    print("Heeeey! You entered the wrong details Please try again or create an account.")
+                    print("Bummer! You entered the wrong details Please try again or create an account.")
 
             else:
-                print("-"*50)
+                print("-"*60)
                 print('\n')
                 print("I really didn't get that. Please use the short codes.")
 
 
 if __name__ == '__main__':
     main()
+
+
